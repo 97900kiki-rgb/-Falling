@@ -120,9 +120,12 @@
 
 - 프로덕션/배포: 좌측 **Publish 탭**에서 원클릭 배포 후 URL 확인
 - API 엔드포인트: 사이트 루트 기준 상대 경로(`tables/{table}`)
-- <img width="1214" height="814" alt="image" src="https://github.com/user-attachments/assets/6d7492aa-4bc2-4cc4-8cbe-1d51c065d2e4" />
+- 
 
 
 ---
+<img width="1214" height="814" alt="image" src="https://github.com/user-attachments/assets/6d7492aa-4bc2-4cc4-8cbe-1d51c065d2e4" />   
+실행링크   
+저장소   
 
 *본 웹앱은 제안용 데모이며, 관제 화면의 센서 값은 시뮬레이션입니다.*
