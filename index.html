@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART CARE &amp; LIFE SAFETY — 낙상사고 예방 스마트 음성 케어 솔루션</title>
+<meta name="description" content="고령자 낙상 사고, 사후 경고가 아니라 위험의 찰나에 공간이 먼저 인지하고 음성으로 행동을 유도하는 엣지 AI 기반 스마트 세이프티 음성 케어 솔루션 제안서.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ====================== 헤더 ====================== -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="SMART CARE &amp; LIFE SAFETY 홈">
+      <span class="brand-mark" aria-hidden="true"><i class="fa-solid fa-shield-heart"></i></span>
+      <span class="brand-text">
+        <b>SMART CARE &amp; LIFE SAFETY</b>
+        <span>Voice Safety Platform</span>
+      </span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="주요 메뉴">
+      <a href="#risks">위험 분석</a>
+      <a href="#how">작동 방식</a>
+      <a href="#features">핵심 기능</a>
+      <a href="dashboard.html">실시간 관제</a>
+      <a href="#contact">도입 문의</a>
+      <a class="btn btn-primary" href="dashboard.html"><i class="fa-solid fa-play"></i> 라이브 데모</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-links">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<div class="top-meta-bar">
+  <div class="container top-meta-inner">
+    <span>개발자: 박서현</span>
+    <span>일자: 2026.10.12</span>
+  </div>
+</div>
+
+<main>
+  <!-- ====================== 히어로 ====================== -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Edge AI · Voice Care Solution</span>
+        <h1 class="h-display">
+          낙상사고는 주의보다<br>
+          <span class="accent">빠른 대처</span>가 필요합니다.
+        </h1>
+        <p class="lead">
+          고령자 낙상 사고는 사후 경고문이나 평소의 당부만으로 막기 어렵습니다.
+          위험이 발생하는 바로 그 찰나, <strong>공간이 먼저 인지하고 적시 음성으로 행동을 유도</strong>해야
+          안전을 지킬 수 있습니다. 가정 및 요양·의료시설 도입 검토를 위한 스마트 세이프티 음성 케어 솔루션 제안서입니다.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="dashboard.html"><i class="fa-solid fa-satellite-dish"></i> 실시간 관제 데모 열기</a>
+          <a class="btn btn-ghost btn-lg" href="#contact"><i class="fa-solid fa-envelope"></i> 도입 문의하기</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>3단계</b><span>감지 → 판단 → 음성/보호자 연결</span></div>
+          <div><b>4영역</b><span>욕실·계단·침실·주방/현관</span></div>
+          <div><b>실시간</b><span>엣지 AI 현장 분석</span></div>
+        </div>
+      </div>
+
+      <!-- 라이브 미니 데모 -->
+      <aside class="demo-panel" aria-label="실시간 감지 데모 미리보기">
+        <h3><i class="fa-solid fa-tower-broadcast" style="color:var(--brand-bright)"></i> 공간이 먼저 반응합니다</h3>
+        <p class="hint">센서 신호가 위험 임계치를 넘으면, 현장 스피커가 즉시 음성으로 안내합니다.</p>
+        <div class="room-map" id="room-map">
+          <div class="room" data-room="욕실">
+            <b><i class="fa-solid fa-shower"></i> 욕실</b>
+            <span>수분 · 시야 저하</span>
+            <div class="sensor" data-metric>습도 42% · 조도 320lx</div>
+          </div>
+          <div class="room" data-room="계단·복도">
+            <b><i class="fa-solid fa-stairs"></i> 계단·복도</b>
+            <span>조도 · 장애물</span>
+            <div class="sensor" data-metric>조도 18lx · 정상</div>
+          </div>
+          <div class="room" data-room="침실">
+            <b><i class="fa-solid fa-bed"></i> 침실</b>
+            <span>기상 · 균형</span>
+            <div class="sensor" data-metric>기상 감지 대기</div>
+          </div>
+          <div class="room" data-room="주방·현관">
+            <b><i class="fa-solid fa-door-open"></i> 주방·현관</b>
+            <span>문턱 · 물기</span>
+            <div class="sensor" data-metric>문턱 단차 정상</div>
+          </div>
+        </div>
+        <div class="voice-strip" id="voice-strip">
+          <span class="voice-icon" id="voice-icon"><i class="fa-solid fa-volume-low"></i></span>
+          <p id="voice-text">대기 중 — 공간 상태를 실시간으로 모니터링하고 있습니다.</p>
+        </div>
+        <div style="margin-top:16px">
+          <a class="btn btn-ghost" href="dashboard.html" style="width:100%">전체 관제 화면 보기 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====================== 낙상 비상 서비스 ====================== -->
+  <section class="section service-activate" id="emergency">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Emergency Response</span>
+        <h2 class="h-section">낙상 순간, 물건이 떨어지면 비상 센서</h2>
+        <p class="lead">어느 곳에서 넘어지든 순간적인 균형 상실을 감지하면, 바닥에 떨어진 물건을 기준 신호로 활용해 더 빠르게 비상 상황을 인식하고 자주 찾는 병원과 연결합니다.</p>
+      </div>
+
+      <div class="service-flow reveal">
+        <div class="service-node service-node--primary">
+          <span class="service-badge">01</span>
+          <i class="fa-solid fa-person-falling"></i>
+          <h3>낙상 감지</h3>
+          <p>욕실·복도·침실 등 위험 구역에서 낙상 패턴을 실시간으로 감지합니다.</p>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="service-node service-node--secondary">
+          <span class="service-badge">02</span>
+          <i class="fa-solid fa-box-open"></i>
+          <h3>물건 낙하 신호</h3>
+          <p>넘어지는 순간 주변 물건이 떨어지는 충격을 기준으로 비상 여부를 재확인합니다.</p>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="service-node service-node--critical">
+          <span class="service-badge">03</span>
+          <i class="fa-solid fa-siren-on"></i>
+          <h3>비상 센서 발동</h3>
+          <p>심각도 기준을 넘으면 즉시 보호자, 관리자, 응급 담당자에게 경보를 전송합니다.</p>
+        </div>
+        <div class="service-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="service-node service-node--hospital">
+          <span class="service-badge">04</span>
+          <i class="fa-solid fa-hospital"></i>
+          <h3>자주 가는 병원 연결</h3>
+          <p>개인별 선호 병원·응급센터와 자동 연계해 신속한 후속 조치를 돕습니다.</p>
+        </div>
+      </div>
+
+      <div class="service-callout reveal">
+        <div class="signal-burst" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div>
+          <span class="eyebrow">Connected Care</span>
+          <h3>낙상 위험이 발생하면, 보호자와 자주 찾는 병원이 같은 순간 연결됩니다.</h3>
+          <p>단순한 경고가 아니라 응급 대응 경로까지 이어지는 서비스로, 빠른 이송과 진료 준비 시간을 줄여줍니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 위험 4영역 ====================== -->
+  <section class="section" id="risks">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Risk Landscape</span>
+        <h2 class="h-section">낙상 위험은 생활 공간 곳곳에 숨어 있습니다.</h2>
+        <p class="lead">일상적인 동선마다 서로 다른 위험 요소가 결합하여 순간적인 균형 상실을 유발합니다.</p>
+      </div>
+      <div class="grid grid-4" id="risk-cards"></div>
+    </div>
+  </section>
+
+  <!-- ====================== 3단계 ====================== -->
+  <section class="section section--tight" id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">3-Step Response</span>
+        <h2 class="h-section">위험을 감지하면 공간이 먼저 말을 겁니다.</h2>
+        <p class="lead">감지부터 판단, 실시간 음성 방송과 보호자 연결까지 3단계로 즉각 대응합니다.</p>
+      </div>
+      <div class="steps reveal" id="steps"></div>
+    </div>
+  </section>
+
+  <!-- ====================== 핵심 기능 ====================== -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="grid grid-2" style="gap:56px;align-items:start">
+        <div class="reveal">
+          <span class="eyebrow">Core Capabilities</span>
+          <h2 class="h-section" style="margin-bottom:14px">엣지 AI 기반 분석으로<br>현장에서 즉시 판단합니다.</h2>
+          <p class="lead" style="margin-bottom:30px">
+            클라우드 왕복 지연 없이, 공간 안의 센서가 스스로 위험을 해석합니다.
+            개인정보는 영상이 아닌 <strong>비식별 센서 신호</strong>로 처리되어 프라이버시를 지킵니다.
+          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-solid fa-microchip"></i> 엣지 AI 분석</span>
+            <span class="chip"><i class="fa-solid fa-wifi"></i> 실시간 센서 융합</span>
+            <span class="chip"><i class="fa-solid fa-volume-high"></i> 적시 음성 방송</span>
+            <span class="chip"><i class="fa-solid fa-mobile-screen"></i> 보호자 앱 연동</span>
+            <span class="chip"><i class="fa-solid fa-user-shield"></i> 비식별 처리</span>
+            <span class="chip"><i class="fa-solid fa-clock"></i> 심야/주간 문맥 인식</span>
+          </div>
+        </div>
+        <div class="grid" id="feature-list" style="gap:14px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 대시보드 CTA ====================== -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta-band reveal">
+        <span class="eyebrow">Live Console</span>
+        <h2 class="h-section">관리자 관제 화면을 지금 체험해 보세요.</h2>
+        <p class="lead">4개 공간의 실시간 센서 · 위험 이벤트 로그 · 음성 안내 콘솔 · 이벤트 통계를 인터랙티브 데모로 확인할 수 있습니다.</p>
+        <div class="hero-actions" style="justify-content:center">
+          <a class="btn btn-primary btn-lg" href="dashboard.html"><i class="fa-solid fa-desktop"></i> 관제 데모 시작하기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== 도입 문의 ====================== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="grid grid-2" style="gap:56px;align-items:start">
+        <div class="reveal">
+          <span class="eyebrow">Get Started</span>
+          <h2 class="h-section" style="margin-bottom:14px">도입 검토, 함께 시작하겠습니다.</h2>
+          <p class="lead" style="margin-bottom:26px">
+            가정 · 요양시설 · 의료기관 · 공공기관의 환경에 맞춰 센서 구성과 음성 안내 정책을 설계합니다.
+          </p>
+          <div class="grid" style="gap:12px">
+            <div class="feature">
+              <i class="fa-solid fa-clipboard-check"></i>
+              <div><b>현장 진단 및 위험 구역 설계</b><span>동선·조도·문턱 데이터를 기반으로 센서 배치를 제안합니다.</span></div>
+            </div>
+            <div class="feature">
+              <i class="fa-solid fa-sliders"></i>
+              <div><b>음성 안내 정책 커스터마이징</b><span>시간대·체류 시간·위험도에 따른 안내 문구를 기관에 맞게 구성합니다.</span></div>
+            </div>
+            <div class="feature">
+              <i class="fa-solid fa-link"></i>
+              <div><b>기존 관제 시스템 연동</b><span>관리자 웹·보호자 앱으로 고위험 호출을 즉시 전파합니다.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3 style="font-size:1.2rem;margin-bottom:6px">도입 상담 신청</h3>
+          <p style="font-size:0.86rem;color:var(--text-mute);margin-bottom:22px">접수된 내용은 담당자가 확인 후 연락드립니다.</p>
+          <form id="inquiry-form" class="form-grid" novalidate>
+            <div class="field">
+              <label for="f-name">담당자 이름 <span class="req">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="예: 박서현" required>
+              <span class="err" data-err></span>
+            </div>
+            <div class="field">
+              <label for="f-org">기관 / 시설명 <span class="req">*</span></label>
+              <input id="f-org" name="organization" type="text" autocomplete="organization" placeholder="예: OO요양원" required>
+              <span class="err" data-err></span>
+            </div>
+            <div class="field">
+              <label for="f-type">시설 유형 <span class="req">*</span></label>
+              <select id="f-type" name="facility_type" required>
+                <option value="">선택해 주세요</option>
+                <option>가정</option>
+                <option>요양시설</option>
+                <option>의료기관</option>
+                <option>공공/지자체</option>
+                <option>기타</option>
+              </select>
+              <span class="err" data-err></span>
+            </div>
+            <div class="field">
+              <label for="f-contact">연락처 / 이메일 <span class="req">*</span></label>
+              <input id="f-contact" name="contact" type="text" placeholder="010-0000-0000 또는 메일 주소" required>
+              <span class="err" data-err></span>
+            </div>
+            <div class="field field--full">
+              <label for="f-msg">문의 내용</label>
+              <textarea id="f-msg" name="message" placeholder="검토 중인 공간 규모, 관심 기능, 도입 일정 등을 자유롭게 남겨 주세요."></textarea>
+            </div>
+            <div class="field--full" style="display:flex;flex-direction:column;gap:12px">
+              <button class="btn btn-primary btn-lg" type="submit" id="submit-btn">
+                <i class="fa-solid fa-paper-plane"></i> <span>상담 신청하기</span>
+              </button>
+              <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+              <p class="form-note"><i class="fa-solid fa-lock"></i> 입력 정보는 상담 목적으로만 사용되며 서버 데이터베이스에 안전하게 저장됩니다.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ====================== 푸터 ====================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><i class="fa-solid fa-shield-heart"></i></span>
+          <span class="brand-text"><b>SMART CARE &amp; LIFE SAFETY</b><span>Voice Safety Platform</span></span>
+        </a>
+        <p>낙상 위험이 발생하는 찰나에 공간이 먼저 인지하고, 적시 음성으로 행동을 유도하는 스마트 세이프티 음성 케어 솔루션.</p>
+      </div>
+      <nav class="footer-links" aria-label="푸터 메뉴">
+        <a href="#risks">위험 분석</a>
+        <a href="#how">작동 방식</a>
+        <a href="#features">핵심 기능</a>
+        <a href="dashboard.html">실시간 관제</a>
+        <a href="#contact">도입 문의</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      개발자: 박서현 · 일자: 2026.10.12
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실시간 안전 관제 데모 — SMART CARE &amp; LIFE SAFETY</title>
+<meta name="description" content="낙상 위험 감지부터 음성 안내, 보호자 전파까지 실시간으로 확인하는 스마트 세이프티 관제 데모 화면.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<!-- ====================== 헤더 ====================== -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html" aria-label="SMART CARE &amp; LIFE SAFETY 홈">
+      <span class="brand-mark" aria-hidden="true"><i class="fa-solid fa-shield-heart"></i></span>
+      <span class="brand-text">
+        <b>SMART CARE &amp; LIFE SAFETY</b>
+        <span>Voice Safety Platform</span>
+      </span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="주요 메뉴">
+      <a href="index.html#risks">위험 분석</a>
+      <a href="index.html#how">작동 방식</a>
+      <a href="index.html#features">핵심 기능</a>
+      <a href="dashboard.html" aria-current="page">실시간 관제</a>
+      <a href="index.html#contact">도입 문의</a>
+      <a class="btn btn-primary" href="index.html"><i class="fa-solid fa-file-lines"></i> 제안서 보기</a>
+    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-links">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<main class="dash-shell">
+  <div class="container">
+
+    <!-- ============ 컨트롤 바 ============ -->
+    <div class="dash-bar">
+      <div>
+        <h1><i class="fa-solid fa-satellite-dish" style="color:var(--brand-bright)"></i> 실시간 안전 관제 콘솔</h1>
+        <p class="sub">엣지 AI가 4개 공간의 위험 신호를 분석하고, 임계치 초과 시 즉시 음성 안내를 실행합니다.</p>
+      </div>
+      <div class="dash-actions">
+        <span class="live-badge" id="live-badge">LIVE MONITORING</span>
+        <button class="btn btn-ghost" id="btn-pause" type="button"><i class="fa-solid fa-pause"></i> <span>일시정지</span></button>
+        <button class="btn btn-ghost" id="btn-trigger" type="button"><i class="fa-solid fa-triangle-exclamation"></i> 위험 시나리오 발생</button>
+        <button class="btn btn-ghost" id="btn-reset" type="button"><i class="fa-solid fa-rotate-left"></i> 세션 초기화</button>
+      </div>
+    </div>
+
+    <!-- ============ KPI ============ -->
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label"><i class="fa-solid fa-house-signal"></i> 모니터링 공간</div>
+        <div class="kpi-value" id="kpi-rooms">4</div>
+        <div class="kpi-sub">욕실 · 계단/복도 · 침실 · 주방/현관</div>
+      </div>
+      <div class="kpi k-warn">
+        <div class="kpi-label"><i class="fa-solid fa-radar"></i> 세션 감지 이벤트</div>
+        <div class="kpi-value" id="kpi-events">0</div>
+        <div class="kpi-sub">주의 단계 이상 감지</div>
+      </div>
+      <div class="kpi k-danger">
+        <div class="kpi-label"><i class="fa-solid fa-bell"></i> 고위험 알림</div>
+        <div class="kpi-value" id="kpi-high">0</div>
+        <div class="kpi-sub">위험 · 긴급 (보호자 전파 대상)</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label"><i class="fa-solid fa-volume-high"></i> 음성 안내 실행</div>
+        <div class="kpi-value" id="kpi-voice">0</div>
+        <div class="kpi-sub">현장 스피커 방송 횟수</div>
+      </div>
+    </div>
+
+    <!-- ============ 메인 ============ -->
+    <div class="dash-main">
+      <!-- 좌측 -->
+      <div>
+        <section class="panel" aria-label="공간별 위험 현황">
+          <div class="panel-head">
+            <h2><i class="fa-solid fa-map-location-dot"></i> 공간별 위험 현황</h2>
+            <span class="count" id="zone-updated">업데이트 대기</span>
+          </div>
+          <div class="floorplan" id="floorplan"></div>
+
+          <div class="voice-console" id="voice-console">
+            <div class="vc-row">
+              <div class="vc-wave" id="vc-wave" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="vc-text">
+                <span id="vc-msg">대기 중 — 공간 상태를 실시간으로 모니터링하고 있습니다.</span>
+                <span class="speaker" id="vc-speaker">현장 스피커 · 대기</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-label="감지 통계">
+          <div class="panel-head">
+            <h2><i class="fa-solid fa-chart-pie"></i> 감지 통계 (세션)</h2>
+          </div>
+          <div class="grid grid-2" style="gap:20px">
+            <div>
+              <p class="count" style="margin-bottom:10px">공간별 감지 비중</p>
+              <div class="chart-wrap"><canvas id="chart-zone" aria-label="공간별 감지 비중 차트" role="img"></canvas></div>
+            </div>
+            <div>
+              <p class="count" style="margin-bottom:10px">심각도별 분포</p>
+              <div class="chart-wrap"><canvas id="chart-sev" aria-label="심각도별 분포 차트" role="img"></canvas></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 우측 -->
+      <div>
+        <section class="panel" aria-label="실시간 이벤트 로그">
+          <div class="panel-head">
+            <h2><i class="fa-solid fa-list-ul"></i> 실시간 이벤트 로그</h2>
+            <span class="count" id="log-count">0건</span>
+          </div>
+          <div class="log-list" id="log-list">
+            <div class="empty">
+              <i class="fa-solid fa-radio"></i>
+              아직 감지된 이벤트가 없습니다.<br>센서 신호를 분석하는 중입니다…
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ============ 저장된 이력 ============ -->
+    <section class="panel" aria-label="저장된 감지 이력" style="margin-top:20px">
+      <div class="panel-head">
+        <h2><i class="fa-solid fa-database"></i> 저장된 감지 이력</h2>
+        <div class="dash-actions">
+          <span class="count" id="history-count">—</span>
+          <button class="btn btn-ghost" id="btn-refresh" type="button" style="padding:9px 16px;font-size:0.82rem">
+            <i class="fa-solid fa-rotate"></i> 새로고침
+          </button>
+        </div>
+      </div>
+      <p class="count" style="margin:-8px 0 14px">
+        위험 · 긴급 단계 이벤트는 자동으로 데이터베이스에 저장되어 이력으로 남습니다.
+      </p>
+      <div class="table-scroll">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>발생 시각</th><th>공간</th><th>위험 유형</th><th>심각도</th><th>음성 안내 문구</th>
+            </tr>
+          </thead>
+          <tbody id="history-body">
+            <tr><td colspan="5" style="text-align:center;color:var(--text-mute)">이력을 불러오는 중…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p style="margin-top:26px;font-size:0.8rem;color:var(--text-mute);text-align:center">
+      <i class="fa-solid fa-circle-info"></i>
+      본 화면은 제안용 시뮬레이션 데모입니다. 센서 값은 엣지 AI 동작을 재현하기 위해 가상으로 생성되며,
+      실제 솔루션에서는 현장 센서 신호로 대체됩니다.
+    </p>
+  </div>
+</main>
+
+<div class="toast-host" id="toast-host" aria-live="polite" aria-atomic="false"></div>
+
+<!-- ====================== 푸터 ====================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><i class="fa-solid fa-shield-heart"></i></span>
+          <span class="brand-text"><b>SMART CARE &amp; LIFE SAFETY</b><span>Voice Safety Platform</span></span>
+        </a>
+        <p>낙상 위험이 발생하는 찰나에 공간이 먼저 인지하고, 적시 음성으로 행동을 유도하는 스마트 세이프티 음성 케어 솔루션.</p>
+      </div>
+      <nav class="footer-links" aria-label="푸터 메뉴">
+        <a href="index.html#risks">위험 분석</a>
+        <a href="index.html#how">작동 방식</a>
+        <a href="index.html#features">핵심 기능</a>
+        <a href="dashboard.html">실시간 관제</a>
+        <a href="index.html#contact">도입 문의</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      © 2026 SMART CARE &amp; LIFE SAFETY · Proposal by 박서현 · 본 페이지는 제안용 데모입니다.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
