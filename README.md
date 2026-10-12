@@ -125,7 +125,7 @@
 
 ---
 <img width="1214" height="814" alt="image" src="https://github.com/user-attachments/assets/6d7492aa-4bc2-4cc4-8cbe-1d51c065d2e4" />   
-실행링크   
-저장소   
+실행링크:   
+저장소: https://github.com/97900kiki-rgb/-Falling    
 
 *본 웹앱은 제안용 데모이며, 관제 화면의 센서 값은 시뮬레이션입니다.*
