@@ -427,6 +427,43 @@ h1, h2, h3, h4 { line-height: 1.24; font-weight: 800; letter-spacing: -0.03em; }
   100% { transform: scale(1.2); opacity: 0; }
 }
 
+/* ============================ 낙상 예방 운동 ============================ */
+.exercise-section {
+  background: linear-gradient(180deg, rgba(52, 213, 200, 0.055), rgba(8, 13, 22, 0.12));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.exercise-safety-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 17px 20px;
+  margin-bottom: 24px;
+  border-left: 3px solid var(--brand);
+  background: rgba(52, 213, 200, 0.07);
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+.exercise-safety-note > i { flex: none; margin-top: 4px; color: var(--brand-bright); }
+.exercise-safety-note strong { color: var(--text); }
+.exercise-videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.exercise-video-item { min-width: 0; }
+.exercise-video {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: #000;
+  box-shadow: var(--shadow);
+}
+.exercise-video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.exercise-video-caption { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 2px 0; }
+.exercise-video-caption div { display: grid; gap: 3px; min-width: 0; }
+.exercise-video-caption b { font-size: 0.94rem; }
+.exercise-video-caption span { color: var(--text-mute); font-size: 0.78rem; }
+.exercise-video-caption a { display: grid; place-items: center; width: 38px; height: 38px; flex: none; border: 1px solid var(--border); border-radius: 50%; color: var(--brand-bright); }
+.exercise-video-caption a:hover { border-color: var(--brand); background: rgba(52, 213, 200, 0.1); }
+
 /* ============================ 위험 4분면 ============================ */
 .risk-card { position: relative; overflow: hidden; }
 .risk-card .risk-icon {
@@ -571,6 +608,7 @@ h1, h2, h3, h4 { line-height: 1.24; font-weight: 800; letter-spacing: -0.03em; }
   .grid-4 { grid-template-columns: 1fr; }
   .service-flow { grid-template-columns: 1fr; }
   .service-callout { grid-template-columns: 1fr; text-align: center; }
+  .exercise-videos { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .hero { padding: 60px 0 56px; }
   .cta-band { padding: 40px 22px; }
