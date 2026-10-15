@@ -125,7 +125,8 @@
 
 
 ---
-<img width="1214" height="814" alt="image" src="https://github.com/user-attachments/assets/6d7492aa-4bc2-4cc4-8cbe-1d51c065d2e4" />   
+<img width="1160" height="757" alt="image" src="https://github.com/user-attachments/assets/6b61cec1-eb47-4755-9c7f-f89cf0973bd7" />
+
 실행링크:https://files-web.kdt2025.com/   
 저장소: https://github.com/97900kiki-rgb/-Falling    
 
