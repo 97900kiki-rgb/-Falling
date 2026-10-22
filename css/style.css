@@ -505,8 +505,9 @@ h1, h2, h3, h4 { line-height: 1.24; font-weight: 800; letter-spacing: -0.03em; }
   background: rgba(255, 197, 61, 0.09);
 }
 .grab-origin i { color: var(--warn); font-size: 1.2rem; }
-.grab-origin span, .grab-route-label span { color: var(--text-mute); font-size: 0.75rem; }
-.grab-origin b { font-size: 1.05rem; }
+.grab-origin span, .grab-route-label span { color: var(--text-mute); font-size: calc(0.75rem + 2pt); }
+.grab-origin b { font-size: calc(1.05rem + 2pt); }
+.grab-bar-section .section-head .lead { font-size: clamp(calc(1rem + 2pt), calc(1.5vw + 2pt), calc(1.14rem + 2pt)); }
 .grab-routes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .grab-route {
   min-width: 0;
@@ -546,8 +547,8 @@ h1, h2, h3, h4 { line-height: 1.24; font-weight: 800; letter-spacing: -0.03em; }
   color: var(--brand-bright);
 }
 .grab-route-label div { display: grid; }
-.grab-route-label b { font-size: 1rem; }
-.grab-route p { color: var(--text-soft); font-size: 0.86rem; }
+.grab-route-label b { font-size: calc(1rem + 2pt); }
+.grab-route p { color: var(--text-soft); font-size: calc(0.86rem + 2pt); }
 .grab-bar-note {
   display: flex;
   align-items: flex-start;
@@ -557,7 +558,7 @@ h1, h2, h3, h4 { line-height: 1.24; font-weight: 800; letter-spacing: -0.03em; }
   border-left: 3px solid var(--warn);
   background: rgba(255, 197, 61, 0.07);
   color: var(--text-soft);
-  font-size: 0.9rem;
+  font-size: calc(0.9rem + 2pt);
 }
 .grab-bar-note > i { flex: none; margin-top: 4px; color: var(--warn); }
 .grab-bar-note strong { color: var(--text); }
