@@ -518,19 +518,6 @@ h1, h2, h3, h4 { line-height: 1.24; font-weight: 800; letter-spacing: -0.03em; }
   background: #111820;
 }
 .grab-photo-frame img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 52%; }
-.grab-photo-glow {
-  position: absolute;
-  top: 52%;
-  left: 51%;
-  width: 50%;
-  height: 14px;
-  transform: rotate(5deg);
-  transform-origin: left center;
-  border: 1px solid rgba(239, 255, 204, 0.95);
-  border-radius: 999px;
-  background: linear-gradient(180deg, #f3ffd3 0%, #bcff62 48%, #8bdd31 100%);
-  box-shadow: 0 0 8px 3px rgba(186, 255, 85, 0.9), 0 0 24px 8px rgba(149, 255, 59, 0.72);
-}
 .grab-photo-tag {
   position: absolute;
   right: 14px;
