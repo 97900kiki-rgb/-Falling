@@ -508,6 +508,42 @@ h1, h2, h3, h4 { line-height: 1.24; font-weight: 800; letter-spacing: -0.03em; }
 .grab-origin span, .grab-route-label span { color: var(--text-mute); font-size: calc(0.75rem + 2pt); }
 .grab-origin b { font-size: calc(1.05rem + 2pt); }
 .grab-bar-section .section-head .lead { font-size: clamp(calc(1rem + 2pt), calc(1.5vw + 2pt), calc(1.14rem + 2pt)); }
+.grab-photo { margin: 0 0 22px; }
+.grab-photo-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 8;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: #111820;
+}
+.grab-photo-frame img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 52%; }
+.grab-photo-glow {
+  position: absolute;
+  top: 52%;
+  left: 51%;
+  width: 50%;
+  height: 14px;
+  transform: rotate(5deg);
+  transform-origin: left center;
+  border: 1px solid rgba(239, 255, 204, 0.95);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f3ffd3 0%, #bcff62 48%, #8bdd31 100%);
+  box-shadow: 0 0 8px 3px rgba(186, 255, 85, 0.9), 0 0 24px 8px rgba(149, 255, 59, 0.72);
+}
+.grab-photo-tag {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 7px 11px;
+  border: 1px solid rgba(186, 255, 85, 0.5);
+  border-radius: 4px;
+  background: rgba(8, 13, 22, 0.82);
+  color: #d6ff9a;
+  font-size: 0.85rem;
+}
+.grab-photo figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 9px 2px 0; color: var(--text-mute); font-size: 0.82rem; }
+.grab-photo figcaption a { color: var(--text-soft); text-decoration: underline; text-underline-offset: 3px; }
 .grab-routes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .grab-route {
   min-width: 0;
